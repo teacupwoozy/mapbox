@@ -9,6 +9,28 @@
     <script>
     nope,
     });
+    map.on("load", function() {
+        var layers = ['0-10', '10-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
+        var colors = ['#f6fef6', '#d4f8d4', '#b2f3b2', '#1bb21b', '#90ee90', '#137f13', '#062a06'];
+
+        for (i = 0; i < layers.length; i++) {
+            var layer = layers[i];
+            var color = colors[i];
+            var item = document.createElement('div');
+            var key = document.createElement('span');
+            key.className = 'legend-key';
+            key.style.backgroundColor = color;
+
+            var value = document.createElement('span');
+            value.innerHTML = layer;
+            item.appendChild(key);
+            item.appendChild(value);
+            legend.appendChild(item);
+        }
+
+    })
+
+
     </script>
     <div class="map-overlay" id="features">
         <h2>US population density</h2>
