@@ -28,6 +28,18 @@
             legend.appendChild(item);
         }
 
+    map.on('mousemove', function(e) {
+        var states = map.queryRenderedFeatures(e.point, {
+            layers: ['statedata']
+        });
+
+        if (states.length > 0) {
+            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3><p><strong><em>' + states[0].properties.density + '<strong> people per quare mile</em></p>';
+        } else {
+            document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
+        }
+    });
+
     })
 
 
