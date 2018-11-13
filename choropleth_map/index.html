@@ -10,6 +10,7 @@
     nope,
     });
     map.on("load", function() {
+        // legend
         var layers = ['0-10', '10-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
         var colors = ['#f6fef6', '#d4f8d4', '#b2f3b2', '#1bb21b', '#90ee90', '#137f13', '#062a06'];
 
@@ -28,6 +29,7 @@
             legend.appendChild(item);
         }
 
+    // mouse over action giving state info
     map.on('mousemove', function(e) {
         var states = map.queryRenderedFeatures(e.point, {
             layers: ['statedata']
@@ -39,6 +41,12 @@
             document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
         }
     });
+
+    // cursor
+    map.getCanvas().style.cursor = 'default';
+
+    // map bounds when first loaded
+    map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
 
     })
 
